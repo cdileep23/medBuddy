@@ -10,6 +10,9 @@ import Banner from './components/Banner';
 import axios from 'axios';
 import HealthCheck from './components/HealthCheck';
 import Bookings from './components/Bookings';
+import FAQ from './components/FAQ';
+import Safety from './components/Safety';
+
 
 const App = () => {
   const [data, setData] = useState({});
@@ -47,6 +50,8 @@ const App = () => {
         <HealthCheck data={data[2]}/>
         <Bookings/>
         <LabTests/>
+        <Safety data={data[7]}/>
+        <FAQ data={data[6]}/>
         </>
       )}
     </>

@@ -41,16 +41,14 @@ const ButtonSlider = ({ buttons, activeButton, onButtonClick }) => {
                 rounded-sm 
                 transition-all 
                 duration-200 
-                w-full 
-                p-1
                 text-sm 
                 font-medium
                 whitespace-nowrap
-                ${
-                  activeButton === button
-                    ? 'bg-white text-blue-500  rounded-sm border border-blue-500'
-                    : 'bg-gray-50 text-gray-600 hover:bg-gray-100 rounded-sm border border-transparent'
-                }
+                w-auto
+                flex-grow
+                ${activeButton === button
+                  ? 'bg-white text-blue-500 rounded-sm border border-blue-500'
+                  : 'bg-gray-50 text-gray-600 hover:bg-gray-100 rounded-sm border border-transparent'}
               `}
             >
               {button}
@@ -74,6 +72,5 @@ const ButtonSlider = ({ buttons, activeButton, onButtonClick }) => {
     </div>
   );
 };
-
 
 export default ButtonSlider;

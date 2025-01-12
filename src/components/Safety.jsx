@@ -3,6 +3,7 @@ import React from 'react'
 const Safety = ({ data }) => {
 
   const safetyArray = data.props;
+ 
 
   return (
     <div className="px-8 max-auto mb-7">
@@ -17,7 +18,7 @@ const Safety = ({ data }) => {
           >
             <img src={e.img} alt={e.title} className="w-20 h-20 object-contain mb-4" />
             <h1 className="text-center text-lg font-semibold mb-2">{e.title}</h1>
-            <p className="text-center text-sm">{e.subTitle}</p>
+            <p className="text-center text-sm">{e.subText}</p>
           </div>
         ))}
       </div>

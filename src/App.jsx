@@ -12,6 +12,7 @@ import HealthCheck from './components/HealthCheck';
 import Bookings from './components/Bookings';
 import FAQ from './components/FAQ';
 import Safety from './components/Safety';
+import UserFeedback from './components/UserFeedback';
 
 
 const App = () => {
@@ -50,6 +51,7 @@ const App = () => {
         <HealthCheck data={data[2]}/>
         <Bookings/>
         <LabTests/>
+        <UserFeedback data={data[5]}/>
         <Safety data={data[7]}/>
         <FAQ data={data[6]}/>
         </>

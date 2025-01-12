@@ -1,13 +1,14 @@
-import React from 'react'
+import React from 'react';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
+} from '@/components/ui/accordion';
 
 const FAQ = ({ data }) => {
   const qa = data.props;
+  console.log(qa);
 
   return (
     <div className="px-8 mx-auto">
@@ -19,13 +20,21 @@ const FAQ = ({ data }) => {
           <AccordionItem key={e.id} value={e.id}>
             <AccordionTrigger>{e.question}</AccordionTrigger>
             <AccordionContent>
-              {e.answer ? e.answer : "Lorem ipsum dolor sit amet, consectetur adipiscing elit."}
+              {e.answer}
+
+              {e.points && (
+                <ul className="list-disc pl-5">
+                  {e.points.map((p, index) => (
+                    <li key={`${e.id}-${index}`}>{p.pnt}</li>
+                  ))}
+                </ul>
+              )}
             </AccordionContent>
           </AccordionItem>
         ))}
       </Accordion>
     </div>
-  )
-}
+  );
+};
 
-export default FAQ
+export default FAQ;

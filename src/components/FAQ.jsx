@@ -8,7 +8,7 @@ import {
 
 const FAQ = ({ data }) => {
   const qa = data.props;
-  console.log(qa);
+ 
 
   return (
     <div className="px-8 mx-auto">

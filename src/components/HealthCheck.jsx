@@ -5,8 +5,7 @@ import ButtonSlider from './ButtonSlider';
 
 const HealthCheck = ({ data }) => {
   const { props } = data;
-  const buttons = data.categories["10386"]; 
-
+  const buttons = data.categories["10386"];
 
   const [active, setActive] = useState("Popular");
 
@@ -14,19 +13,22 @@ const HealthCheck = ({ data }) => {
     setActive(button);
   };
 
-  const checkUpsArr = props[0].packages;
+  const checkUpsArr = props[0]?.packages || [];
 
-  // Slider settings
+  const packagesToRender = checkUpsArr.filter((packageItem) =>
+    packageItem.subCategories.includes(active.toUpperCase())
+  );
+
   const sliderSettings = {
     infinite: true,
     speed: 500,
     slidesToShow: 4,
-    centerMode: true,
-    centerPadding: '0',
+    centerMode: packagesToRender.length < 4, // Enable centering if fewer than 4 items
+    centerPadding: packagesToRender.length < 4 ? '20%' : '0', // Adjust padding if centered
     focusOnSelect: true,
     swipe: true,
     swipeToSlide: true,
-    arrows: false, // Disables arrows
+    arrows: false,
     responsive: [
       {
         breakpoint: 1024,
@@ -34,6 +36,8 @@ const HealthCheck = ({ data }) => {
           slidesToShow: 3,
           swipe: true,
           swipeToSlide: true,
+          centerMode: packagesToRender.length < 3,
+          centerPadding: packagesToRender.length < 3 ? '15%' : '0',
         },
       },
       {
@@ -61,12 +65,18 @@ const HealthCheck = ({ data }) => {
           onButtonClick={onClickActive} 
         />
       </div>
-      <div>
-        <Slider {...sliderSettings}>
-          {checkUpsArr.map((h, index) => (
-            <EachHealthCheckUp health={h} key={`${h.price}-${index}`} />
-          ))}
-        </Slider>
+      <div className="slider-container"> {/* Add a wrapper here for better control */}
+        {packagesToRender.length > 0 ? (
+          <Slider {...sliderSettings}>
+            {packagesToRender.map((healthPackage, index) => (
+              <EachHealthCheckUp health={healthPackage} key={`${healthPackage.contractId}-${index}`} />
+            ))}
+          </Slider>
+        ) : (
+          <div className="text-center py-4 text-gray-500">
+            No checkup available in this category.
+          </div>
+        )}
       </div>
     </div>
   );

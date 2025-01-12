@@ -17,7 +17,7 @@ import UserFeedback from './components/UserFeedback';
 
 const App = () => {
   const [data, setData] = useState({});
-  const [loading, setLoading] = useState(true); // Track loading state
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     fetch();

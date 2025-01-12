@@ -6,7 +6,7 @@ const EachBanner = ({ eachBanner }) => {
       <img
         src={eachBanner.bannerUrl}
         alt={eachBanner.title || 'Banner'}
-        className="w-full h-40 object-contain rounded-lg" // object-contain ensures full image content without cropping
+        className="w-full h-40 object-contain rounded-lg"
       />
     </div>
   );
